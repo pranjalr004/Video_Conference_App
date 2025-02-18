@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard'
   const overrides={
     colors:{
       LIGHT:{primary:"0b5cff"},
+      DARK:{secondary:"#1D2F53"},
     }
   }
     return (
