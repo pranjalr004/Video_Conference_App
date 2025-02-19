@@ -11,7 +11,7 @@ import { setUser } from '../app/slices/AuthSlice'
   useEffect(()=>{
     const unsubscribe=onAuthStateChanged(firebaseAuth,(currentUser)=>{
         console.log(currentUser)
-        if(!currentUser) navigate("/")
+        if(!currentUser) navigate("/login")
             else{
                 dispatch(setUser({
                     uid:currentUser.uid,
