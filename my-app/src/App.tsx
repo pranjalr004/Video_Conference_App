@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import ThemeSelector from './components/ThemeSelector'
+import CreateMeeting from './pages/CreateMeeting'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -44,6 +45,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/' element={<Dashboard />} />
             <Route path='*' element={<Dashboard />} />
+            <Route path='/create' element={<CreateMeeting/>}/>
           </Routes>
         </EuiThemeProvider>
       </EuiProvider>
