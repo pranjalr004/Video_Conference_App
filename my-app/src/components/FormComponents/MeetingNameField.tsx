@@ -1,0 +1,20 @@
+import { EuiFieldText, EuiFormRow } from '@elastic/eui'
+import React from 'react'
+import ThemeSelector from '../ThemeSelector'
+
+function MeetingNameField({label,placeholder,value,error,setMeetingName,isInvalid}:{
+  label:string,
+  placeholder:string,
+  value:string,
+  setMeetingName:React.Dispatch<React.SetStateAction<string>>,
+  isInvalid:boolean,
+  error:Array<string>
+}) {
+  return (
+    <EuiFormRow label={label} isInvalid={isInvalid}error={error} >
+      <EuiFieldText placeholder={placeholder} value={value} onChange={e=>setMeetingName(e.target.value)} isInvalid={isInvalid}/>
+    </EuiFormRow>
+  )
+}
+
+export default MeetingNameField
