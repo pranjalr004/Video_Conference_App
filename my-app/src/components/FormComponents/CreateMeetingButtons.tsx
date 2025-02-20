@@ -21,8 +21,8 @@ function CreateMeetingButtons({
                 </EuiButton>
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
-                <EuiButton type='submit' onClick={createMeeting}>
-                    Submit
+                <EuiButton type='submit' onClick={createMeeting} fill>
+                    {isEdit ? "Edit Meeting" : "Create Meeting"}
                 </EuiButton>
             </EuiFlexItem>
         </EuiFlexGroup>

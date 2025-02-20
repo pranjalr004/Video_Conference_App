@@ -5,10 +5,12 @@ import useToast from '../hooks/useToast';
 import moment from 'moment';
 import { doc, updateDoc } from 'firebase/firestore';
 import { firebaseDB } from '../utils/firebaseConfig';
-import { EuiFlyout, EuiFlyoutBody, EuiFlyoutHeader, EuiForm, EuiTitle } from '@elastic/eui';
+import { EuiFlyout, EuiFlyoutBody, EuiFlyoutHeader, EuiForm, EuiFormRow, EuiSpacer, EuiSwitch, EuiTitle } from '@elastic/eui';
 import MeetingNameField from './FormComponents/MeetingNameField';
 import MeetingMaximumUsersField from './FormComponents/MeetingMaximumUsersField';
 import MeetingUserField from './FormComponents/MeetingUserField';
+import MeetingDateField from './FormComponents/MeetingDateField';
+import CreateMeetingButtons from './FormComponents/CreateMeetingButtons';
 
 export default function EditFlyout({
     closeFlyout,
@@ -64,7 +66,7 @@ export default function EditFlyout({
             invitedUsers:selectedUser.map((user:UserType)=>user.uid),
             maxUsers:size,
             meetingDate:startDate.format("L"),
-            status:!status,
+            status: !status,
         };
         delete editedMeeting.docId;
         const docRef=doc(firebaseDB,"meetings",meeting.docId!);
@@ -104,6 +106,20 @@ export default function EditFlyout({
                             isClearable={false}
                             placeholder='Select a User'/>
                     )}
+                    <MeetingDateField selected={startDate} setStartDate={setStartDate}/>
+                    <EuiFormRow display="columnCompressed" label="Cancel Meeting">
+                        <EuiSwitch
+                        showLabel={false}
+                        label="Cancel Meeting"
+                        checked={status}
+                        onChange={(e)=>setStatus(e.target.checked)}/>
+                    </EuiFormRow>
+                    <EuiSpacer/>
+                    <CreateMeetingButtons
+                    createMeeting={editMeeting}
+                    isEdit
+                    closeFlyout={closeFlyout}
+                    />
             </EuiForm>
         </EuiFlyoutBody>
     </EuiFlyout>      
