@@ -21,3 +21,4 @@ export interface ToastType{
     title:string,
     color:"success" | "primary" | "warning" | "danger" | undefined;
 }
+
