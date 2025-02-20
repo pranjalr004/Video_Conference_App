@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
-import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiIcon, EuiImage } from '@elastic/eui'
+import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage } from '@elastic/eui'
 import dashboard1 from "../assets/dashboard1.png"
 import dashboard2 from "../assets/dashboard2.png"
 import dashboard3 from "../assets/dashboard3.png"
@@ -41,7 +41,7 @@ export default function Dashboard() {
           icon={<EuiImage size='5rem' alt='icon' src={dashboard3}/>}
           title={`Meetings`}
           description="View the meetings that are invited to"
-          onClick={()=>navigate("/create")}
+          onClick={()=>navigate("/meetings")}
           paddingSize='xl'
           />
         </EuiFlexItem>
