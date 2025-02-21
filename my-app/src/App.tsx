@@ -13,6 +13,7 @@ import VideoConference from './pages/VideoConference'
 import MyMeetings from './pages/MyMeetings'
 import Meeting from './pages/Meeting'
 import JoinMeeting from './pages/JoinMeeting'
+import { AnalyticsProps } from '@vercel/analytics/*'
 
 function App() {
   const dispatch = useAppDispatch()
