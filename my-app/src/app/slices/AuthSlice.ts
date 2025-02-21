@@ -25,9 +25,8 @@ export const AuthSlice=createSlice(
             },
             setUser:(state,action)=>{
                 state.userInfo=action.payload;
-            }
+            },
         },
-    }
-)
+    });
 
 export const {setUser,changeTheme}=AuthSlice.actions;

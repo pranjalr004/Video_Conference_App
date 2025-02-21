@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { firebaseAuth } from '../utils/firebaseConfig'
 import { setUser } from '../app/slices/AuthSlice'
  
- function useAuth() {
+export default function useAuth() {
   const navigate=useNavigate()
   const dispatch=useDispatch()
   useEffect(()=>{
@@ -16,7 +16,7 @@ import { setUser } from '../app/slices/AuthSlice'
                 dispatch(setUser({
                     uid:currentUser.uid,
                     email:currentUser.email,
-                    name:currentUser.displayName
+                    name:currentUser.displayName!,
                 }))
         }
     })
@@ -24,4 +24,3 @@ import { setUser } from '../app/slices/AuthSlice'
   },[dispatch,navigate])
  }
  
- export default useAuth

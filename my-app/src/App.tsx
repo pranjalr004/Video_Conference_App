@@ -12,22 +12,24 @@ import { setToasts } from './app/slices/MeetingSlice'
 import VideoConference from './pages/VideoConference'
 import MyMeetings from './pages/MyMeetings'
 import Meeting from './pages/Meeting'
+import JoinMeeting from './pages/JoinMeeting'
 
 function App() {
   const dispatch = useAppDispatch()
-  const isDarkTheme = useAppSelector((zoom) => zoom.auth.isDarkTheme);
-  const [theme, setTheme] = useState<EuiThemeColorMode>("light");
+  const isDarkTheme = useAppSelector((zoomApp) => zoomApp.auth.isDarkTheme);
+  const [isInitialEffect,setIsInitialEffect]=useState(true);
   const toasts=useAppSelector((zoom)=>zoom.meetings.toasts)
-  const [isInitialTheme, setIsIntitalTheme] = useState(true)
-
+  
   const removeToast=(removedToast:{id:string})=>{
     dispatch(
       setToasts(
         toasts.filter((toast:{id:string})=>toast.id !== removedToast.id)
       )
-    )
-  }
+    );
+  };
 
+
+  const [theme, setTheme] = useState<EuiThemeColorMode>("light");
   useEffect(() => {
     const theme = localStorage.getItem("zoom-theme")
     if (theme) {
@@ -39,11 +41,13 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (isInitialTheme) setIsIntitalTheme(false)
+    if (isInitialEffect) setIsInitialEffect(false)
     else {
       window.location.reload()
     }
   }, [isDarkTheme])
+
+
 
   const overrides = {
     colors: {
@@ -61,10 +65,10 @@ function App() {
             <Route path='/create1on1' element={<OneOnOneMeeting/>}/>
             <Route path='/videoconference' element={<VideoConference/>}/>
             <Route path='/mymeetings' element={<MyMeetings/>}/>
+            <Route path='/join/:id' element={<JoinMeeting/>}/>
             <Route path='/meetings' element={<Meeting/>}/>
             <Route path='/' element={<Dashboard />} />
             <Route path='*' element={<Login />} />
-            <Route path=''/>
           </Routes>
           <EuiGlobalToastList
           toasts={toasts}
