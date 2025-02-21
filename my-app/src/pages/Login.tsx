@@ -3,8 +3,8 @@ import React from 'react'
 import animation from "../assets/animation.gif"
 import logo from "../assets/logo.png"
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
-import { firebaseAuth, userRef } from '../utils/firebaseConfig'
-import { addDoc, getDocs, query, where } from 'firebase/firestore'
+import { firebaseAuth, firebaseDB, userRef } from '../utils/firebaseConfig'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../app/slices/AuthSlice'
@@ -26,15 +26,16 @@ export default function Login() {
         const firestoreQuery=query(userRef,where("uid","==",uid))
         const fetchedUsers=await getDocs(firestoreQuery);
         if(fetchedUsers.docs.length===0){
-            await addDoc(userRef,{
-                uid,name:displayName,
-                email
-            })
+            await addDoc(collection(firebaseDB,"users"),{
+                uid,
+                name:displayName,
+                email,
+            });
         }
+        dispatch(setUser({uid,email:email!,name:displayName!}))
     }
-    dispatch(setUser({uid,name:displayName,email}))
     navigate("/")
-}
+};
 
   return (
     <EuiProvider colorMode='dark'>

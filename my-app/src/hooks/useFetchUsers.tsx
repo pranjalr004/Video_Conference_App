@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { UserType } from '../utils/Types'
 import { useAppSelector } from '../app/hooks'
-import { getDoc, getDocs, query, where } from 'firebase/firestore';
+import { getDocs, query, where } from 'firebase/firestore';
 import { userRef } from '../utils/firebaseConfig';
 
 function useFetchUsers() {

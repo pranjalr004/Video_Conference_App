@@ -15,7 +15,7 @@ export default function ThemeSelector({
         if(theme){
             setTheme(theme as EuiThemeColorMode)
         }
-    })
+    },[])
     return (
     <>
         <Suspense fallback={<></>}>

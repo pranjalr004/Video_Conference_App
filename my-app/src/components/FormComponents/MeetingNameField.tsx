@@ -11,9 +11,11 @@ function MeetingNameField({label,placeholder,value,error,setMeetingName,isInvali
   error:Array<string>
 }) {
   return (
+    <ThemeSelector>
     <EuiFormRow label={label} isInvalid={isInvalid}error={error} >
       <EuiFieldText placeholder={placeholder} value={value} onChange={e=>setMeetingName(e.target.value)} isInvalid={isInvalid}/>
     </EuiFormRow>
+    </ThemeSelector>
   )
 }
 

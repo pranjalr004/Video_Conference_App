@@ -10,12 +10,11 @@ export default function useAuth() {
   const dispatch=useDispatch()
   useEffect(()=>{
     const unsubscribe=onAuthStateChanged(firebaseAuth,(currentUser)=>{
-        console.log(currentUser)
         if(!currentUser) navigate("/login")
             else{
                 dispatch(setUser({
                     uid:currentUser.uid,
-                    email:currentUser.email,
+                    email:currentUser.email!,
                     name:currentUser.displayName!,
                 }))
         }

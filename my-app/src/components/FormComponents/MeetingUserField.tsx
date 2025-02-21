@@ -18,7 +18,7 @@ function MeetingUserField({
 
   return (
 
-      <EuiFormRow label={label} >
+      <EuiFormRow label={label} isInvalid={isInvalid} error={error} >
         <EuiComboBox 
         options={options}
         onChange={onChange}

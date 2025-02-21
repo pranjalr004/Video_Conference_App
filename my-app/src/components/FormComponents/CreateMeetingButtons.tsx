@@ -6,7 +6,7 @@ function CreateMeetingButtons({
     isEdit = false,
     closeFlyout,
 }: {
-    createMeeting: () => void;
+    createMeeting: () => {};
     isEdit?: boolean;
     closeFlyout?: () => {};
 }) {

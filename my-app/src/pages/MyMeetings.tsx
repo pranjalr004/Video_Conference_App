@@ -23,14 +23,14 @@ export default function MyMeetings() {
         );
         const fetchedMeetings=await getDocs(firestoreQuery);
         if(fetchedMeetings.docs.length){
-            const MyMeetings:Array<MeetingType>=[];
+            const myMeetings:Array<MeetingType>=[];
             fetchedMeetings.forEach((meeting)=>{
-                MyMeetings.push({
+                myMeetings.push({
                     docId:meeting.id,
                     ...(meeting.data() as MeetingType),
                 });
             });
-            setMeetings(MyMeetings);
+            setMeetings(myMeetings);
             }
     },[userInfo?.uid]);
     useEffect(()=>{
